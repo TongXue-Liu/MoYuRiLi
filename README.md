@@ -60,10 +60,13 @@
 
 ## 📖 主要参考文献
 
-- [electronforge]('https://www.electronforge.io/')
-- [Electron]('https://www.electronjs.org/zh/docs/latest/api/menu-item#menuitemsubmenu')
-- [Hitokoto]('https://developer.hitokoto.cn/sentence/')
-- [今日热榜]('https://github.com/imsyy/DailyHotApi')
+- [electronforge](https://www.electronforge.io/)
+
+- [Electron](https://www.electronjs.org/zh/docs/latest/api/menu-item#menuitemsubmenu)
+
+- [Hitokoto](https://developer.hitokoto.cn/sentence/)
+
+- [今日热榜](https://github.com/imsyy/DailyHotApi)
 
 ## 📄 License
 
