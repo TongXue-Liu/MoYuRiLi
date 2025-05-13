@@ -1,4 +1,4 @@
-import { app, BrowserWindow } from "electron";
+import { app, BrowserWindow, Menu, nativeImage, Tray } from "electron";
 import path from "node:path";
 import started from "electron-squirrel-startup";
 import { SetupAutoLaunch } from "./utils/auto-launch";
@@ -8,9 +8,13 @@ if (started) {
   app.quit();
 }
 
+let mainWindow;
+let tray;
+
+//create new Window
 const createWindow = () => {
   // Create the browser window.
-  const mainWindow = new BrowserWindow({
+  mainWindow = new BrowserWindow({
     width: 990,
     height: 530,
     webPreferences: {
@@ -35,8 +39,29 @@ const createWindow = () => {
   // Open the DevTools.
   mainWindow.webContents.openDevTools();
 
-  // minimize display icon
-  mainWindow.minimize();
+  // tray;
+  createTrayMenu();
+};
+
+//create tray window Icon
+const createTrayMenu = () => {
+  const icon = nativeImage.createFromPath("icon-.png");
+  tray = new Tray(icon);
+
+  //build Tray Menu Item
+  let TrayMenu = Menu.buildFromTemplate([
+    { label: "摸鱼日历", type: "normal" },
+    {
+      label: "更多",
+      submenu: [{ label: "开机自启", type: "radio", checked: false }],
+    },
+    { label: "", type: "separator" },
+    { label: "退出", type: "normal" },
+  ]);
+  tray.setContextMenu(TrayMenu);
+
+  tray.setToolTip("摸鱼日历-Liu");
+  tray.setTitle("摸鱼日历-Liu");
 };
 
 // This method will be called when Electron has finished
