@@ -1,7 +1,9 @@
-<div style="width:100%;text-align:center;">
-    <image src="https://github.com/TongXue-Liu/MoYuRiLi/raw/main/icon/icon_128.png" alt='摸鱼日记'>
-    <h2>摸鱼日历 🐟📅</h2>
-</div>
+<p align="center">
+  <img src="https://github.com/TongXue-Liu/MoYuRiLi/raw/main/icon/icon_128.png" alt="摸鱼日历" width="128" />
+</p>
+
+<h2 align="center">摸鱼日历 🐟📅</h2>
+
 
 
 > 人间桂花落，夜静春山空。
