@@ -45,7 +45,7 @@ const createWindow = () => {
 
 //create tray window Icon
 const createTrayMenu = () => {
-  const icon = nativeImage.createFromPath("icon-.png");
+  const icon = nativeImage.createFromPath("./icon/icon.png");
   tray = new Tray(icon);
 
   //build Tray Menu Item
