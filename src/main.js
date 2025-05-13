@@ -10,14 +10,16 @@ if (started) {
 const createWindow = () => {
   // Create the browser window.
   const mainWindow = new BrowserWindow({
-    width: 342,
-    height: 567,
+    width: 990,
+    height: 530,
     webPreferences: {
       preload: path.join(__dirname, "preload.js"),
+      contextIsolation: true, // 必须开启
+      nodeIntegration: true, // 必须关闭
     },
   });
 
-  // mainWindow.resizable = false;
+  mainWindow.resizable = false;
   mainWindow.menuBarVisible = false;
 
   // and load the index.html of the app.

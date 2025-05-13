@@ -21,27 +21,21 @@ import Hot from '@/components/Hot.vue'
 </script>
 
 <style>
-/* .demo-tabs>.el-tabs__content {
-    padding: 32px;
-    color: #6b778c;
-    font-size: 32px;
-    font-weight: 600;
-} */
-
 .box {
     display: flex;
     height: 100%;
-    gap: 20px;
+    width: 100%;
+    /* gap: 20px; */
+    overflow: hidden;
 }
 
-.calender {
+.calendar {
+    width: 300px;
     min-width: 300px;
-    height: 100%;
 }
 
 .hot {
+    width: calc(100% - 300px);
     height: 100%;
-    overflow: scroll;
-    flex: 1;
 }
 </style>

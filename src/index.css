@@ -8,10 +8,12 @@ body {
   /* margin: auto; */
   /* max-width: 38rem; */
   height: 100vh;
+  width: 100vw;
   box-sizing: border-box;
   padding: 1rem;
 }
 
 #app {
   height: 100%;
+  width: 100%;
 }
