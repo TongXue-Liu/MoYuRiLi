@@ -14,19 +14,24 @@
 </template>
 
 <script lang="ts" setup>
-import type { TabsPaneContext } from 'element-plus'
 import { ref } from 'vue'
 // 引入热点及是否展示
 import { hotTabs } from '@/setting/hot.js';
 // 引入展示热点组件
-import BilibiliHot from '@/components/hot/BilibiliHot.vue'
-import WeiBoHot from '@/components/hot/WeiBoHot.vue'
-import DouYinHot from '@/components/hot/DouYinHot.vue'
+import Bilibili from '@/components/hot/Bilibili.vue';
+import WeiBo from '@/components/hot/WeiBo.vue';
+import DouYin from '@/components/hot/DouYin.vue';
+import TouTiao from '@/components/hot/TouTiao.vue';
+import TieBa from '@/components/hot/TieBa.vue';
+import YuanShen from '@/components/hot/YuanShen.vue';
 // 注册组件
 const components = {
-    BilibiliHot,
-    WeiBoHot,
-    DouYinHot
+    Bilibili,
+    WeiBo,
+    DouYin,
+    TouTiao,
+    TieBa,
+    YuanShen
 }
 // 定位tab
 const activeName = ref('bilibili')

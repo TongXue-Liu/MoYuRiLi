@@ -1,5 +1,5 @@
 <template>
-    <div class="webo-box">
+    <div class="jinritoutiao-box">
         <el-timeline>
             <el-timeline-item v-for="(activity, index) in activities" :key="index"
                 :timestamp="dateFormat(activity.timestamp)">
@@ -11,7 +11,7 @@
 
 <script lang="ts" setup>
 import { ref } from 'vue';
-import { weiBoHot } from '@/api/hot.js';
+import { getTouTiaoHot } from '@/api/hot.js';
 // 剪贴板操作
 import { copyUrlHandler } from '@/utils/clipboard.js';
 //时间处理
@@ -20,13 +20,13 @@ import { dateFormat } from '@/utils/date.js';
 let activities = ref({});
 
 //分页数据
-weiBoHot().then((res) => {
+getTouTiaoHot().then((res) => {
     activities.value = res.data;
 })
 </script>
 
 <style>
-.webo-box {
+.jinritoutiao-box {
     height: 100%;
 }
 

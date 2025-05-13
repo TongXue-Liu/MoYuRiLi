@@ -1,5 +1,5 @@
 <template>
-    <div class="bilibili-box">
+    <div class="tieba-box">
         <el-timeline>
             <el-timeline-item v-for="(activity, index) in activities" :key="index"
                 :timestamp="dateFormat(activity.timestamp)">
@@ -10,26 +10,23 @@
 </template>
 
 <script lang="ts" setup>
-import { ref, onMounted } from 'vue';
-import { BilibiliHot } from '@/api/hot.js';
-import moment from 'moment'
+import { ref } from 'vue';
+import { getTieBaHot } from '@/api/hot.js';
 // 剪贴板操作
 import { copyUrlHandler } from '@/utils/clipboard.js';
 //时间处理
 import { dateFormat } from '@/utils/date.js';
-
 //返回的热点数据
 let activities = ref({});
 
-
 //分页数据
-BilibiliHot().then((res) => {
+getTieBaHot().then((res) => {
     activities.value = res.data;
 })
 </script>
 
 <style>
-.bilibili-box {
+.tieba-box {
     height: 100%;
 }
 
