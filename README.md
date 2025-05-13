@@ -1,18 +1,19 @@
-## 摸鱼日历 🐟📅
+<div style="width:100%;text-align:center;">
+    <image src="https://github.com/TongXue-Liu/MoYuRiLi/raw/main/icon/icon_128.png" alt='摸鱼日记'>
+    <h2>摸鱼日历 🐟📅</h2>
+</div>
 
-![摸鱼日历](./icon/icon_128.png)
 
->人间桂花落，夜静春山空。
->认真生活的同时，也别忘了偶尔摸鱼。
+> 人间桂花落，夜静春山空。
+> 认真生活的同时，也别忘了偶尔摸鱼。
 
 &emsp;摸鱼日历是一款基于 Electron 开发的跨平台桌面应用，聚合每日“摸鱼日历”内容，展示温暖语句、冷知识和热门话题，帮你在工作/学习中偷得片刻轻松。
-
 
 ## ✨ 功能特色
 
 - 📅 每日更新的摸鱼日历图文内容
 
-- 🌍 支持微博、抖音、B站、今日头条等平台跳转
+- 🌍 支持微博、抖音、B 站、今日头条等平台跳转
 
 - 📘 展示思绪角摘录和精选语句
 
@@ -31,6 +32,7 @@
 - Axios：请求远程 API，获取日历内容
 
 ## 🚀 快速启动
+
 ```bash
     # 克隆项目
     git clone https://github.com/yourname/mo-yu-calendar.git
@@ -54,6 +56,16 @@
 
 支持开机自启、自定义窗口大小与位置
 
-## 📄 License
-MIT License © 2025 [TongXue-Liu]
+## 📖 主要参考文献
 
+- [electronforge]('https://www.electronforge.io/')
+
+- [Electron]('https://www.electronjs.org/zh/docs/latest/api/menu-item#menuitemsubmenu')
+
+- [Hitokoto]('https://developer.hitokoto.cn/sentence/')
+
+- [今日热榜]('https://github.com/imsyy/DailyHotApi')
+
+## 📄 License
+
+MIT License © 2025 [TongXue-Liu]
