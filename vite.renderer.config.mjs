@@ -7,6 +7,11 @@ export default defineConfig({
   plugins: [vue()],
   server: {
     proxy: {
+      "/api/yiyan": {
+        target: "https://international.v1.hitokoto.cn/",
+        changeOrigin: true,
+        rewrite: (p) => p.replace(/^\/api\/yiyan/, ""),
+      },
       "/api": {
         target: "https://api-hot.imsyy.top/",
         changeOrigin: true,
