@@ -1,6 +1,7 @@
 import { app, BrowserWindow } from "electron";
 import path from "node:path";
 import started from "electron-squirrel-startup";
+import { SetupAutoLaunch } from "./utils/auto-launch";
 
 // Handle creating/removing shortcuts on Windows when installing/uninstalling.
 if (started) {
@@ -33,6 +34,9 @@ const createWindow = () => {
 
   // Open the DevTools.
   mainWindow.webContents.openDevTools();
+
+  // minimize display icon
+  mainWindow.minimize();
 };
 
 // This method will be called when Electron has finished
@@ -49,6 +53,9 @@ app.whenReady().then(() => {
     }
   });
 });
+
+//set the program auto launch
+SetupAutoLaunch(false);
 
 // Quit when all windows are closed, except on macOS. There, it's common
 // for applications and their menu bar to stay active until the user quits
