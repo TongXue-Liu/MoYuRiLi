@@ -63,10 +63,11 @@ const createTrayMenu = async () => {
     },
   ]);
 
-  tray.setContextMenu(TrayMenu);
-
+  
   tray.setToolTip("摸鱼日历-Liu");
   tray.setTitle("摸鱼日历-Liu");
+
+  tray.setContextMenu(TrayMenu);
 };
 
 //create new Window

@@ -10,7 +10,7 @@
 </template>
 
 <script lang="ts" setup>
-import { ref, defineExpose, onMounted } from 'vue';
+import { ref, onMounted } from 'vue';
 import { getWeiBoHot } from '@/api/hot.js';
 // 剪贴板操作
 import { copyUrlHandler } from '@/utils/clipboard.js';

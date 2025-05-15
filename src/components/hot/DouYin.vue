@@ -10,7 +10,7 @@
 </template>
 
 <script lang="ts" setup>
-import { onMounted, ref, defineExpose } from 'vue';
+import { onMounted, ref } from 'vue';
 import { getDouYinHot } from '@/api/hot.js';
 // 剪贴板操作
 import { copyUrlHandler } from '@/utils/clipboard.js';
