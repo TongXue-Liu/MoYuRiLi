@@ -5,6 +5,9 @@ import { ipcMain } from "electron";
 
 const cwd = process.cwd();
 const filePath = join(cwd, "config/app.properties");
+// const filePath = process.env.
+//   ? join(cwd, '/config/app.properties')
+//   : join(cwd, '/resources/config/app.properties');
 
 class ConfigHandle {
     

@@ -6,7 +6,7 @@
                 🌱 思绪一角：<span>{{ hitokoto ?? '希望你今天黑开心！' }}</span>
             </div>
             <div class="current-date">
-                ⏰ {{ getCurrentDate() }}
+                ⏰ {{ timer }}
             </div>
         </div>
         <div class="bottom">
@@ -47,6 +47,11 @@ onMounted(() => {
     getYiYanHandler();
 })
 
+//获取最新时间
+let timer = ref("");
+setInterval(() => {
+    timer.value = getCurrentDate();
+}, 1000)
 
 </script>
 <style>
@@ -102,6 +107,4 @@ onMounted(() => {
     width: calc(100% - 300px);
     height: 100%;
 }
-
-
 </style>

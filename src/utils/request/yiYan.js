@@ -1,20 +1,20 @@
 import axios from "axios";
-import {
-  ElNotification,
-  ElMessageBox,
-  ElMessage,
-  ElLoading,
-} from "element-plus";
+import { ElNotification, ElMessage } from "element-plus";
+import urls from "@/setting/requestUrl";
+
+const isDev = process.env.NODE_ENV === "development";
 
 axios.defaults.headers["Content-Type"] = "application/json;charset=utf-8";
+
 // 创建axios实例
 const service = axios.create({
   // axios中请求配置有baseURL选项，表示请求URL公共部分 import.meta.env.VITE_APP_BASE_API
-  baseURL: "/api",
+  baseURL: isDev
+    ? "/api/yiyan" // 让 devServer 接管
+    : urls.yiyan,
   // 超时
   timeout: 180000,
 });
-
 // request拦截器
 service.interceptors.request.use(
   (config) => {

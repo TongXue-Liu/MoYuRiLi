@@ -1,4 +1,4 @@
-import request from "@/utils/request";
+import request from "@/utils/request/global";
 
 // B站
 export function getBilibiliHot() {
@@ -8,7 +8,6 @@ export function getBilibiliHot() {
   });
 }
 
-
 // 微博
 export function getWeiBoHot() {
   return request({
@@ -16,7 +15,6 @@ export function getWeiBoHot() {
     url: "weibo?cache=true",
   });
 }
-
 
 // 抖音
 export function getDouYinHot() {
@@ -26,32 +24,26 @@ export function getDouYinHot() {
   });
 }
 
-
 // 头条A
-export function getTouTiaoHot(){
+export function getTouTiaoHot() {
   return request({
     method: "get",
     url: "toutiao?cache=true",
   });
 }
 
-
 // 百度贴吧
-export function getTieBaHot(){
+export function getTieBaHot() {
   return request({
     method: "get",
     url: "tieba?cache=true",
   });
 }
 
-
 // 元神
-export function getYuanShenHot(){
+export function getYuanShenHot() {
   return request({
     method: "get",
     url: "genshin?cache=true",
   });
 }
-
-
-

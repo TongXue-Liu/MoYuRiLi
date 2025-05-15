@@ -14,38 +14,6 @@ if (started) {
 let mainWindow;
 let tray;
 
-//create new Window
-const createWindow = () => {
-  // Create the browser window.
-  mainWindow = new BrowserWindow({
-    width: 990,
-    height: 530,
-    webPreferences: {
-      preload: path.join(__dirname, "preload.js"),
-      contextIsolation: true, // 必须开启
-      nodeIntegration: true, // 必须关闭
-    },
-  });
-
-  mainWindow.resizable = false;
-  mainWindow.menuBarVisible = false;
-
-  // and load the index.html of the app.
-  if (MAIN_WINDOW_VITE_DEV_SERVER_URL) {
-    mainWindow.loadURL(MAIN_WINDOW_VITE_DEV_SERVER_URL);
-  } else {
-    mainWindow.loadFile(
-      path.join(__dirname, `../renderer/${MAIN_WINDOW_VITE_NAME}/index.html`)
-    );
-  }
-
-  // Open the DevTools.
-  mainWindow.webContents.openDevTools();
-
-  //Create program Tray;
-  createTrayMenu();
-};
-
 //create tray window Icon
 const createTrayMenu = async () => {
   const icon = nativeImage.createFromPath("./icon/icon.png");
@@ -79,12 +47,50 @@ const createTrayMenu = async () => {
       ],
     },
     { label: "", type: "separator" },
-    { label: "退出", type: "normal" },
+    {
+      label: "退出",
+      type: "normal",
+      click: () => {
+        app.quit();
+      },
+    },
   ]);
   tray.setContextMenu(TrayMenu);
 
   tray.setToolTip("摸鱼日历-Liu");
   tray.setTitle("摸鱼日历-Liu");
+};
+
+//create new Window
+const createWindow = () => {
+  // Create the browser window.
+  mainWindow = new BrowserWindow({
+    width: 990,
+    height: 530,
+    webPreferences: {
+      preload: path.join(__dirname, "preload.js"),
+      contextIsolation: true, // 必须开启
+      nodeIntegration: true, // 必须关闭
+    },
+  });
+
+  mainWindow.resizable = false;
+  mainWindow.menuBarVisible = false;
+
+  // and load the index.html of the app.
+  if (MAIN_WINDOW_VITE_DEV_SERVER_URL) {
+    mainWindow.loadURL(MAIN_WINDOW_VITE_DEV_SERVER_URL);
+  } else {
+    mainWindow.loadFile(
+      path.join(__dirname, `../renderer/${MAIN_WINDOW_VITE_NAME}/index.html`)
+    );
+  }
+
+  // Open the DevTools.
+  mainWindow.webContents.openDevTools();
+
+  //Create program Tray;
+  createTrayMenu();
 };
 
 // This method will be called when Electron has finished
