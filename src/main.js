@@ -1,7 +1,10 @@
 import { app, BrowserWindow, Menu, nativeImage, Tray } from "electron";
 import path from "node:path";
 import started from "electron-squirrel-startup";
+//自动启动
 import { SetupAutoLaunch } from "./utils/auto-launch";
+//配置
+import configHandler from "./handler/ConfigHandle";
 
 // Handle creating/removing shortcuts on Windows when installing/uninstalling.
 if (started) {
@@ -39,21 +42,41 @@ const createWindow = () => {
   // Open the DevTools.
   mainWindow.webContents.openDevTools();
 
-  // tray;
+  //Create program Tray;
   createTrayMenu();
 };
 
 //create tray window Icon
-const createTrayMenu = () => {
+const createTrayMenu = async () => {
   const icon = nativeImage.createFromPath("./icon/icon.png");
   tray = new Tray(icon);
+
+  //读取配置
+  const config = await configHandler.getConfig();
 
   //build Tray Menu Item
   let TrayMenu = Menu.buildFromTemplate([
     { label: "摸鱼日历", type: "normal" },
     {
       label: "更多",
-      submenu: [{ label: "开机自启", type: "radio", checked: false }],
+      submenu: [
+        {
+          label: "开机自启",
+          type: "checkbox",
+          checked: config.general?.autoLaunch === true,
+          click: async (menuItem) => {
+            //保存新的配置
+            await configHandler.setConfig(null, {
+              general: {
+                autoLaunch: menuItem.checked,
+              },
+              //
+            });
+            //设置开机自启
+            SetupAutoLaunch(menuItem.checked);
+          },
+        },
+      ],
     },
     { label: "", type: "separator" },
     { label: "退出", type: "normal" },
@@ -79,9 +102,6 @@ app.whenReady().then(() => {
   });
 });
 
-//set the program auto launch
-SetupAutoLaunch(false);
-
 // Quit when all windows are closed, except on macOS. There, it's common
 // for applications and their menu bar to stay active until the user quits
 // explicitly with Cmd + Q.
@@ -93,3 +113,6 @@ app.on("window-all-closed", () => {
 
 // In this file you can include the rest of your app's specific main process
 // code. You can also put them in separate files and import them here.
+// Global Register
+configHandler.register();
+//set the program auto launch

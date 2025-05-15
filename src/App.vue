@@ -6,7 +6,7 @@
                 🌱 思绪一角：<span>{{ hitokoto ?? '希望你今天黑开心！' }}</span>
             </div>
             <div class="current-date">
-                {{ getCurrentDate() }}
+               ⏰ {{ getCurrentDate() }}
             </div>
         </div>
         <div class="bottom">
@@ -78,7 +78,7 @@ onMounted(() => {
     color: #887272;
 }
 
-.current-date{
+.current-date {
     font-size: 0.8rem;
     font-weight: 600;
 }
