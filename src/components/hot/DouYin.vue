@@ -10,19 +10,35 @@
 </template>
 
 <script lang="ts" setup>
-import { ref } from 'vue';
+import { onMounted, ref, defineExpose } from 'vue';
 import { getDouYinHot } from '@/api/hot.js';
 // 剪贴板操作
 import { copyUrlHandler } from '@/utils/clipboard.js';
 //时间处理
 import { dateFormat } from '@/utils/date.js';
+
 //返回的热点数据
 let activities = ref({});
+const getDouYinHotHandler = () => {
+    getDouYinHot().then((res) => {
+        activities.value = res.data;
+    })
 
-//分页数据
-getDouYinHot().then((res) => {
-    activities.value = res.data;
+}
+
+// 暴露刷新方法
+const refresh = () => {
+    console.log("DouYin Refresh……");
+    getDouYinHotHandler();
+}
+
+// onMounted
+onMounted(() => {
+    getDouYinHotHandler();  //获取热点数据
 })
+
+
+defineExpose({ refresh })
 </script>
 
 <style>

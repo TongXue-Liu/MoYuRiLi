@@ -68,6 +68,8 @@
 
 - [今日热榜](https://github.com/imsyy/DailyHotApi)
 
+<!-- https://www.cnblogs.com/rion1234567/p/18059244 自动启动 -->
+
 ## 📄 License
 
 MIT License © 2025 [TongXue-Liu]

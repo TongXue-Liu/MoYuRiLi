@@ -10,9 +10,8 @@
 </template>
 
 <script lang="ts" setup>
-import { ref, onMounted } from 'vue';
+import { ref, onMounted, defineExpose } from 'vue';
 import { getBilibiliHot } from '@/api/hot.js';
-import moment from 'moment'
 // 剪贴板操作
 import { copyUrlHandler } from '@/utils/clipboard.js';
 //时间处理
@@ -20,12 +19,24 @@ import { dateFormat } from '@/utils/date.js';
 
 //返回的热点数据
 let activities = ref({});
+const getBilibiliHotHandle = () => {
+    getBilibiliHot().then((res) => {
+        activities.value = res.data;
+    })
+}
 
+//刷新数据
+const refresh = () => {
+    console.log("Bilibili Refresh……");
+    getBilibiliHotHandle();
+}
 
-//分页数据
-getBilibiliHot().then((res) => {
-    activities.value = res.data;
+onMounted(() => {
+    //获取数据
+    getBilibiliHotHandle();
 })
+
+defineExpose({ refresh })
 </script>
 
 <style>

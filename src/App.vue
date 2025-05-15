@@ -6,7 +6,7 @@
                 🌱 思绪一角：<span>{{ hitokoto ?? '希望你今天黑开心！' }}</span>
             </div>
             <div class="current-date">
-               ⏰ {{ getCurrentDate() }}
+                ⏰ {{ getCurrentDate() }}
             </div>
         </div>
         <div class="bottom">
@@ -20,8 +20,6 @@
             </div>
         </div>
     </div>
-
-
 </template>
 
 <script lang="ts" setup>
@@ -35,6 +33,7 @@ import { getYiYan } from '@/api/yiyan'
 // 当前时间
 import { getCurrentDate } from '@/utils/date';
 
+//获取一言数据
 const hitokoto = ref('');
 function getYiYanHandler() {
     getYiYan().then((res) => {
@@ -48,6 +47,7 @@ onMounted(() => {
     getYiYanHandler();
 })
 
+
 </script>
 <style>
 .box {
@@ -57,6 +57,7 @@ onMounted(() => {
     width: 100%;
     /* gap: 20px; */
     overflow: hidden;
+    position: relative;
 }
 
 /* 一言 */
@@ -101,4 +102,6 @@ onMounted(() => {
     width: calc(100% - 300px);
     height: 100%;
 }
+
+
 </style>

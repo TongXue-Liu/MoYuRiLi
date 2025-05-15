@@ -10,19 +10,36 @@
 </template>
 
 <script lang="ts" setup>
-import { ref } from 'vue';
+import { ref, onMounted, defineExpose } from 'vue';
 import { getTieBaHot } from '@/api/hot.js';
 // 剪贴板操作
 import { copyUrlHandler } from '@/utils/clipboard.js';
 //时间处理
 import { dateFormat } from '@/utils/date.js';
+
 //返回的热点数据
 let activities = ref({});
 
-//分页数据
-getTieBaHot().then((res) => {
-    activities.value = res.data;
+const getTieBaHotHandler = () => {
+    getTieBaHot().then((res) => {
+        activities.value = res.data;
+    })
+
+}
+
+// 暴露刷新方法
+const refresh = () => {
+    console.log("TieBa Refresh……");
+    getTieBaHotHandler();
+}
+
+// onMounted
+onMounted(() => {
+    getTieBaHotHandler();  //获取热点数据
 })
+
+
+defineExpose({ refresh })
 </script>
 
 <style>

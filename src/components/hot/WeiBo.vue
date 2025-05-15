@@ -10,7 +10,7 @@
 </template>
 
 <script lang="ts" setup>
-import { ref } from 'vue';
+import { ref, defineExpose, onMounted } from 'vue';
 import { getWeiBoHot } from '@/api/hot.js';
 // 剪贴板操作
 import { copyUrlHandler } from '@/utils/clipboard.js';
@@ -19,10 +19,25 @@ import { dateFormat } from '@/utils/date.js';
 //返回的热点数据
 let activities = ref({});
 
-//分页数据
-getWeiBoHot().then((res) => {
-    activities.value = res.data;
+const getgetWeiBoHotHandler = () => {
+    getWeiBoHot().then((res) => {
+        activities.value = res.data;
+    })
+}
+
+// 暴露刷新方法
+const refresh = () => {
+    console.log("WeiBo Refresh……");
+    getgetWeiBoHotHandler();
+}
+
+// onMounted
+onMounted(() => {
+    getgetWeiBoHotHandler();  //获取热点数据
 })
+
+
+defineExpose({ refresh })
 </script>
 
 <style>

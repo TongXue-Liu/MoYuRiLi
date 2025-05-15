@@ -4,17 +4,27 @@
         <el-tabs v-model="activeName" class="demo-tabs" tab-position="top">
             <el-tab-pane v-for="tab in hotTabs.filter(tab => tab.isShow)" :key="tab.name" :label="tab.label"
                 :name="tab.name">
-                <component v-if="tab.component" :is="components[tab.component]" />
+                <component v-if="tab.component" :is="components[tab.component]"
+                    :ref="el => setComponentRef(tab.name, el)" />
                 <template v-else>
                     {{ tab.content }}
                 </template>
             </el-tab-pane>
         </el-tabs>
+        <!-- 全局刷新 -->
+        <div class="refresh">
+            <el-button type="success" size="large" round @click="refreshGlobal">
+                <el-icon class="spin-icon">
+                    <Eleme />
+                </el-icon>
+                刷新
+            </el-button>
+        </div>
     </div>
 </template>
 
 <script lang="ts" setup>
-import { ref } from 'vue'
+import { ref, reactive } from 'vue'
 // 引入热点及是否展示
 import { hotTabs } from '@/setting/hot.js';
 // 引入展示热点组件
@@ -33,8 +43,31 @@ const components = {
     TieBa,
     YuanShen
 }
+// Icon
+import {
+    Eleme
+} from '@element-plus/icons-vue'
+import { ElMessage } from "element-plus";
+
 // 定位tab
-const activeName = ref('bilibili')
+const activeName = ref('bilibili');
+
+// 用来存放组件 ref 的容器
+const componentRefs = reactive({})
+
+const setComponentRef = (name, el) => {
+    if (el) componentRefs[name] = el;
+}
+
+//刷新全局
+const refreshGlobal = () => {
+    console.log('正在刷新所有热点组件...');
+    Object.values(componentRefs).forEach(c => {
+        c?.refresh?.()
+    })
+    ElMessage.success("刷新成功!")
+}
+
 </script>
 
 <style>
@@ -44,6 +77,7 @@ const activeName = ref('bilibili')
     padding: 0 10px;
     box-sizing: border-box;
     display: flex;
+    position: relative;
 }
 
 .demo-tabs {
@@ -61,5 +95,27 @@ const activeName = ref('bilibili')
     color: #6b778c;
     font-size: 32px;
     font-weight: 600;
+}
+
+/* 刷新 */
+.refresh {
+    position: absolute;
+    right: 5%;
+    bottom: 8%;
+}
+
+.spin-icon {
+    animation: spin 3s linear infinite;
+    margin-right: 6px;
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
 }
 </style>
