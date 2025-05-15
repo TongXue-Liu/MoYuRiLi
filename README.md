@@ -70,6 +70,8 @@
 
 <!-- https://www.cnblogs.com/rion1234567/p/18059244 自动启动 -->
 
+<!-- https://juejin.cn/post/7407610458787889179 托盘图标 -->
+
 ## 📄 License
 
 MIT License © 2025 [TongXue-Liu]

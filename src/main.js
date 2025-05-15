@@ -16,8 +16,15 @@ let tray;
 
 //create tray window Icon
 const createTrayMenu = async () => {
-  const icon = nativeImage.createFromPath("./icon/icon.png");
-  tray = new Tray(icon);
+  let iconPath;
+  if (process.env.NODE_ENV === "development") {
+    // 开发环境
+    iconPath = path.join(app.getAppPath(), "icons", "icon.ico");
+  } else {
+    // 正式环境
+    iconPath = path.join(path.dirname(app.getPath("exe")), "resources/icons/icon.ico");
+  }
+  tray = new Tray(iconPath);
 
   //读取配置
   const config = await configHandler.getConfig();
@@ -55,6 +62,7 @@ const createTrayMenu = async () => {
       },
     },
   ]);
+
   tray.setContextMenu(TrayMenu);
 
   tray.setToolTip("摸鱼日历-Liu");
@@ -67,6 +75,7 @@ const createWindow = () => {
   mainWindow = new BrowserWindow({
     width: 990,
     height: 530,
+    // titleBarStyle: "hidden",
     webPreferences: {
       preload: path.join(__dirname, "preload.js"),
       contextIsolation: true, // 必须开启

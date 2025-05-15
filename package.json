@@ -1,8 +1,8 @@
 {
-  "name": "my-app",
-  "productName": "my-app",
+  "name": "moyu-rili",
+  "productName": "MoYuRiLi",
   "version": "1.0.0",
-  "description": "My Electron application description",
+  "description": "人间桂花落，夜静春山空。 认真生活的同时，也别忘了偶尔摸鱼。",
   "main": ".vite/build/main.js",
   "scripts": {
     "start": "electron-forge start",
