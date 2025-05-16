@@ -22,7 +22,7 @@ const createTrayMenu = async () => {
     iconPath = path.join(app.getAppPath(), "icons", "icon.ico");
   } else {
     // 正式环境
-    iconPath = path.join(path.dirname(app.getPath("exe")), "resources/icons/icon.ico");
+    iconPath = path.join(process.resourcesPath, "icons", "icon.ico");
   }
   tray = new Tray(iconPath);
 
@@ -63,10 +63,8 @@ const createTrayMenu = async () => {
     },
   ]);
 
-  
   tray.setToolTip("摸鱼日历-Liu");
-  tray.setTitle("摸鱼日历-Liu");
-
+  // tray.setTitle("摸鱼日历-Liu");
   tray.setContextMenu(TrayMenu);
 };
 
@@ -97,7 +95,7 @@ const createWindow = () => {
   }
 
   // Open the DevTools.
-  mainWindow.webContents.openDevTools();
+  // mainWindow.webContents.openDevTools();
 
   //Create program Tray;
   createTrayMenu();

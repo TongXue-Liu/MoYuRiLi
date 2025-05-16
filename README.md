@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://github.com/TongXue-Liu/MoYuRiLi/raw/main/icon/icon_128.png" alt="摸鱼日历" width="128" />
+  <img src="https://github.com/TongXue-Liu/MoYuRiLi/raw/main/icons/icon_128.png" alt="摸鱼日历" width="128" />
 </p>
 
 <h2 align="center">摸鱼日历 🐟📅</h2>
@@ -44,10 +44,10 @@
     npm install
 
     # 启动开发环境
-    npm run dev
+    npm run start
 
     # 打包生产应用
-    npm run build
+    npm run make
 ```
 
 ## 📦 安装方式
@@ -57,6 +57,13 @@
 解压并运行 摸鱼日历.exe（Windows）
 
 支持开机自启、自定义窗口大小与位置
+
+## 🛠 遗留问题
+
+1. Tray托盘右键菜单丢失(25-5-16)
+
+2. 应用程序Icon无法进行打包(25-5-16)
+
 
 ## 📖 主要参考文献
 
