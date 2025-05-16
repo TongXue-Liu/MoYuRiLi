@@ -19,16 +19,15 @@ const createTrayMenu = async () => {
   let iconPath;
   if (process.env.NODE_ENV === "development") {
     // 开发环境
-    iconPath = path.join(app.getAppPath(), "icons", "icon.ico");
+    iconPath = path.join(app.getAppPath(), "/resources", "/icons/icon.ico");
   } else {
     // 正式环境
-    iconPath = path.join(process.resourcesPath, "icons", "icon.ico");
+    iconPath = path.join(path.dirname(app.getPath("exe")), "/resources", "/icons/icon.ico");
   }
   tray = new Tray(iconPath);
 
   //读取配置
   const config = await configHandler.getConfig();
-
   //build Tray Menu Item
   let TrayMenu = Menu.buildFromTemplate([
     { label: "摸鱼日历", type: "normal" },
@@ -96,16 +95,16 @@ const createWindow = () => {
 
   // Open the DevTools.
   // mainWindow.webContents.openDevTools();
-
-  //Create program Tray;
-  createTrayMenu();
 };
 
 // This method will be called when Electron has finished
 // initialization and is ready to create browser windows.
 // Some APIs can only be used after this event occurs.
 app.whenReady().then(() => {
+  //set the program auto launch
   createWindow();
+  //Create program Tray;
+  createTrayMenu();
 
   // On OS X it's common to re-create a window in the app when the
   // dock icon is clicked and there are no other windows open.

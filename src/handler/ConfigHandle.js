@@ -1,20 +1,21 @@
 import { join } from "node:path";
 import fs from "node:fs";
 import ini from "ini";
-import { ipcMain } from "electron"; 
-
-const cwd = process.cwd();
-const filePath = join(cwd, "config/app.properties");
-// const filePath = process.env.
-//   ? join(cwd, '/config/app.properties')
-//   : join(cwd, '/resources/config/app.properties');
+import { ipcMain } from "electron";
 
 class ConfigHandle {
-    
+  
+  cwd = process.cwd();
+
+  filePath =
+    process.env.NODE_ENV === "development"
+      ? join(this.cwd, "/resources/config/app.properties")
+      : join(this.cwd, "/resources/config/app.properties");
+
   // 读取配置
-  getConfig(_) {
+  getConfig() {
     return new Promise((resolve, reject) => {
-      fs.readFile(filePath, "utf8", function (err, dataStr) {
+      fs.readFile(this.filePath, "utf8", (err, dataStr) => {
         if (err) {
           return reject(err.message);
         }
@@ -23,31 +24,28 @@ class ConfigHandle {
     });
   }
 
-  //设置配置
+  // 设置配置
   setConfig(_, config) {
     return new Promise((resolve, reject) => {
-      fs.readFile(filePath, "utf8", function (err, dataStr) {
+      fs.readFile(this.filePath, "utf8", (err, dataStr) => {
         if (err) {
           return reject(err.message);
         }
         const origin = ini.parse(dataStr.toString());
-        fs.writeFile(
-          filePath,
-          ini.stringify(Object.assign(origin, config)),
-          function (err) {
-            if (err) {
-              return reject(err.message);
-            }
-            resolve("success");
+        const mergedConfig = Object.assign(origin, config);
+        fs.writeFile(this.filePath, ini.stringify(mergedConfig), (err) => {
+          if (err) {
+            return reject(err.message);
           }
-        );
+          resolve("success");
+        });
       });
     });
   }
 
-  // 匿名函数
+  // 注册 ipcMain 事件
   register() {
-    ipcMain.handle("get-config", this.setConfig.bind(this));
+    ipcMain.handle("get-config", this.getConfig.bind(this));  // 修正这里
     ipcMain.handle("set-config", this.setConfig.bind(this));
   }
 }
