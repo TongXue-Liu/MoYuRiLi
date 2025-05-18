@@ -65,6 +65,17 @@ const createTrayMenu = async () => {
   tray.setToolTip("摸鱼日历-Liu");
   // tray.setTitle("摸鱼日历-Liu");
   tray.setContextMenu(TrayMenu);
+
+
+  //restore the window
+  tray.on("click", () => {
+    if (mainWindow.isVisible()) {
+      mainWindow.hide();
+    } else {
+      mainWindow.setSize(990, 530);
+      mainWindow.show();
+    }
+  });
 };
 
 //create new Window
@@ -95,6 +106,11 @@ const createWindow = () => {
 
   // Open the DevTools.
   // mainWindow.webContents.openDevTools();
+
+  // minimize the window
+  mainWindow.on("minimize", () => {
+    mainWindow.hide();
+  });
 };
 
 // This method will be called when Electron has finished
