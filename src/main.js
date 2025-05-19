@@ -1,10 +1,12 @@
-import { app, BrowserWindow, Menu, nativeImage, Tray } from "electron";
+import { app, BrowserWindow, Menu, nativeImage, Tray,autoUpdater } from "electron";
 import path from "node:path";
 import started from "electron-squirrel-startup";
 //自动启动
 import { SetupAutoLaunch } from "./utils/auto-launch";
 //配置
 import configHandler from "./handler/ConfigHandle";
+//自动更新
+import autoUpdaterHandler from "./autoUpdater";
 
 // Handle creating/removing shortcuts on Windows when installing/uninstalling.
 if (started) {
@@ -22,7 +24,11 @@ const createTrayMenu = async () => {
     iconPath = path.join(app.getAppPath(), "/resources", "/icons/icon.ico");
   } else {
     // 正式环境
-    iconPath = path.join(path.dirname(app.getPath("exe")), "/resources", "/icons/icon.ico");
+    iconPath = path.join(
+      path.dirname(app.getPath("exe")),
+      "/resources",
+      "/icons/icon.ico"
+    );
   }
   tray = new Tray(iconPath);
 
@@ -65,7 +71,6 @@ const createTrayMenu = async () => {
   tray.setToolTip("摸鱼日历-Liu");
   // tray.setTitle("摸鱼日历-Liu");
   tray.setContextMenu(TrayMenu);
-
 
   //restore the window
   tray.on("click", () => {
@@ -121,6 +126,8 @@ app.whenReady().then(() => {
   createWindow();
   //Create program Tray;
   createTrayMenu();
+  //auto updater
+  autoUpdaterHandler(app,autoUpdater);
 
   // On OS X it's common to re-create a window in the app when the
   // dock icon is clicked and there are no other windows open.

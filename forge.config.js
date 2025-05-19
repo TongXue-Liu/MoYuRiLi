@@ -1,14 +1,12 @@
 const { FusesPlugin } = require("@electron-forge/plugin-fuses");
 const { FuseV1Options, FuseVersion } = require("@electron/fuses");
 
+
 module.exports = {
   packagerConfig: {
-    "asar": true,
-    "extraResource": [
-      "./resources/config",
-      "./resources/icons",
-    ],
-    "icon":'./resources/icons/icon'
+    asar: true,
+    extraResource: ["./resources/config", "./resources/icons"],
+    icon: "./resources/icons/icon",
   },
   rebuildConfig: {},
   makers: [
@@ -67,5 +65,5 @@ module.exports = {
       [FuseV1Options.EnableEmbeddedAsarIntegrityValidation]: true,
       [FuseV1Options.OnlyLoadAppFromAsar]: true,
     }),
-  ],
+  ]
 };
