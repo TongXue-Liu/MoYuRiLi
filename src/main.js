@@ -1,4 +1,9 @@
-import { app, BrowserWindow, Menu, nativeImage, Tray,autoUpdater } from "electron";
+import {
+  app,
+  BrowserWindow,
+  Menu,
+  Tray,
+} from "electron";
 import path from "node:path";
 import started from "electron-squirrel-startup";
 //自动启动
@@ -6,7 +11,9 @@ import { SetupAutoLaunch } from "./utils/auto-launch";
 //配置
 import configHandler from "./handler/ConfigHandle";
 //自动更新
-import autoUpdaterHandler from "./autoUpdater";
+import { UpdateManager } from "./autoUpdater";
+//环境检查
+import isDev from "electron-is-dev";
 
 // Handle creating/removing shortcuts on Windows when installing/uninstalling.
 if (started) {
@@ -19,7 +26,7 @@ let tray;
 //create tray window Icon
 const createTrayMenu = async () => {
   let iconPath;
-  if (process.env.NODE_ENV === "development") {
+  if (isDev) {
     // 开发环境
     iconPath = path.join(app.getAppPath(), "/resources", "/icons/icon.ico");
   } else {
@@ -93,7 +100,7 @@ const createWindow = () => {
     webPreferences: {
       preload: path.join(__dirname, "preload.js"),
       contextIsolation: true, // 必须开启
-      nodeIntegration: true, // 必须关闭
+      nodeIntegration: false, // 必须关闭
     },
   });
 
@@ -110,12 +117,22 @@ const createWindow = () => {
   }
 
   // Open the DevTools.
-  // mainWindow.webContents.openDevTools();
+  mainWindow.webContents.openDevTools();
 
   // minimize the window
   mainWindow.on("minimize", () => {
     mainWindow.hide();
   });
+
+  Object.defineProperty(app, "isPackaged", {
+    get() {
+      return true;
+    },
+  });
+
+  if (app.isPackaged) {
+    UpdateManager.getInstance().init(mainWindow);
+  }
 };
 
 // This method will be called when Electron has finished
@@ -126,8 +143,6 @@ app.whenReady().then(() => {
   createWindow();
   //Create program Tray;
   createTrayMenu();
-  //auto updater
-  autoUpdaterHandler(app,autoUpdater);
 
   // On OS X it's common to re-create a window in the app when the
   // dock icon is clicked and there are no other windows open.

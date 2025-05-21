@@ -25,6 +25,29 @@
  *  });
  * ```
  */
+
+window.addEventListener("DOMContentLoaded", () => {
+  window.electronAPI.on("update-message", (event, args) => {
+    console.log(
+      "ipcRenderer,update-message,message:" + JSON.stringify(args.message)
+    );
+    if ("update-not-available" === args.cmd) {
+      console.log("ipcRenderer,update-not-available");
+    } else if ("update-available" === args.cmd) {
+      console.log("ipcRenderer,update-available");
+    } else if ("update-downloaded" === args.cmd) {
+      console.log("ipcRenderer,update-downloaded");
+    } else if ("error" === args.cmd) {
+      console.log("ipcRenderer,error");
+    }
+  });
+
+  setTimeout(() => {
+    console.log("ipcRenderer,checkForUpdate");
+    window.electronAPI.send("checkForUpdate");
+  }, 3000);
+});
+
 import "./index.css";
 
 import { createApp } from "vue";
