@@ -17,10 +17,10 @@ if (started) {
 
 let mainWindow;
 let tray;
+let iconPath;
 
 //create tray window Icon
 const createTrayMenu = async () => {
-  let iconPath;
   if (isDev) {
     // 开发环境
     iconPath = path.join(app.getAppPath(), "/resources", "/icons/icon.ico");
@@ -101,7 +101,8 @@ const createWindow = () => {
 
   mainWindow.resizable = false;
   mainWindow.menuBarVisible = false;
-
+  // console.log(path.join(__dirname, "resources/icons/icon_64.png"));
+  // mainWindow.setWindowButtonVisibility()
   // and load the index.html of the app.
   if (MAIN_WINDOW_VITE_DEV_SERVER_URL) {
     mainWindow.loadURL(MAIN_WINDOW_VITE_DEV_SERVER_URL);
@@ -112,7 +113,7 @@ const createWindow = () => {
   }
 
   // Open the DevTools.
-  mainWindow.webContents.openDevTools();
+  // mainWindow.webContents.openDevTools();
 
   // minimize the window
   mainWindow.on("minimize", () => {
@@ -138,6 +139,9 @@ app.whenReady().then(() => {
   createWindow();
   //Create program Tray;
   createTrayMenu();
+  //设置application Icon
+  mainWindow.setIcon(iconPath);
+
 
   // On OS X it's common to re-create a window in the app when the
   // dock icon is clicked and there are no other windows open.

@@ -5,8 +5,13 @@
             <div class="yiyan">
                 🌱 思绪一角：<span>{{ hitokoto ?? '希望你今天黑开心！' }}</span>
             </div>
-            <div class="current-date">
-                ⏰ {{ timer }}
+            <div class="tips">
+                <div class="github">
+                    🐱 <el-link type="primary" @click="copyUrlHandler(project_url)">开源地址</el-link>
+                </div>
+                <div class="time">
+                    ⏰ {{ timer ?? '2025……' }}
+                </div>
             </div>
         </div>
         <div class="bottom">
@@ -32,6 +37,11 @@ import Hot from '@/components/Hot.vue'
 import { getYiYan } from '@/api/yiyan'
 // 当前时间
 import { getCurrentDate } from '@/utils/date';
+//打开浏览器
+import { copyUrlHandler } from '@/utils/clipboard.js'
+
+//项目地址
+const project_url = ref("https://github.com/TongXue-Liu/MoYuRiLi");
 
 //获取一言数据
 const hitokoto = ref(null);
@@ -49,7 +59,7 @@ onMounted(() => {
 })
 
 //获取最新时间
-let timer = ref("");
+let timer = ref(null);
 setInterval(() => {
     timer.value = getCurrentDate();
 }, 1000)
@@ -85,11 +95,12 @@ setInterval(() => {
     color: #887272;
 }
 
-.current-date {
+.tips {
     font-size: 0.8rem;
     font-weight: 600;
+    display: flex;
+    gap: 15px;
 }
-
 
 /* hot部分 */
 .bottom {
