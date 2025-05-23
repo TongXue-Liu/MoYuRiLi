@@ -75,6 +75,8 @@
 
 - [今日热榜](https://github.com/imsyy/DailyHotApi)
 
+- [electron-release-server(更新服务器)](https://github.com/ArekSredzki/electron-release-server)
+
 <!-- https://www.cnblogs.com/rion1234567/p/18059244 自动启动 -->
 
 <!-- https://juejin.cn/post/7407610458787889179 托盘图标 -->
