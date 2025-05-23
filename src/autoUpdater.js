@@ -1,5 +1,7 @@
 //update.js
 import { app, ipcMain, dialog, autoUpdater } from "electron";
+//环境检查
+import isDev from "electron-is-dev";
 
 export class UpdateManager {
   static instance = new UpdateManager();
@@ -8,7 +10,9 @@ export class UpdateManager {
     return this.instance;
   }
 
-  baseUrl = process.env.AUTO_UPDATE_SERVER || "http://192.168.191.129:8080";
+  baseUrl = isDev
+    ? process.env.AUTO_UPDATE_SERVER
+    : "http://192.168.191.129:8080";
 
   mainWindow = null;
 
@@ -60,7 +64,10 @@ export class UpdateManager {
 
     autoUpdater.on("error", (error) => {
       console.log("ipcMain-update,error:" + error);
-      this.sendUpdateMessage({ cmd: "error", message: error });
+      this.sendUpdateMessage({
+        cmd: "error",
+        message: `error-msg:${error},url:${feedUrl}`,
+      });
     });
 
     autoUpdater.on("update-not-available", () => {

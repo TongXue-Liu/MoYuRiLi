@@ -38,13 +38,16 @@ window.addEventListener("DOMContentLoaded", () => {
     } else if ("update-downloaded" === args.cmd) {
       console.log("ipcRenderer,update-downloaded");
     } else if ("error" === args.cmd) {
-      console.log("ipcRenderer,error");
+      console.log("ipcRenderer,error" + args.message);
+    }else{
+      console.log(args);
     }
   });
 
   setTimeout(() => {
-    console.log("ipcRenderer,checkForUpdate");
     window.electronAPI.send("checkForUpdate");
+    console.log("ipcRenderer,checkForUpdate");
+    console.log(window.electronAPI);
   }, 3000);
 });
 

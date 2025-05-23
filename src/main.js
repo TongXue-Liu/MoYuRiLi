@@ -1,9 +1,4 @@
-import {
-  app,
-  BrowserWindow,
-  Menu,
-  Tray,
-} from "electron";
+import { app, BrowserWindow, Menu, Tray } from "electron";
 import path from "node:path";
 import started from "electron-squirrel-startup";
 //自动启动
@@ -117,18 +112,18 @@ const createWindow = () => {
   }
 
   // Open the DevTools.
-  mainWindow.webContents.openDevTools();
+  // mainWindow.webContents.openDevTools();
 
   // minimize the window
   mainWindow.on("minimize", () => {
     mainWindow.hide();
   });
 
-  Object.defineProperty(app, "isPackaged", {
-    get() {
-      return true;
-    },
-  });
+  // Object.defineProperty(app, "isPackaged", {
+  //   get() {
+  //     return true;
+  //   },
+  // });
 
   if (app.isPackaged) {
     UpdateManager.getInstance().init(mainWindow);
