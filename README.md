@@ -35,41 +35,32 @@
 
 ## 🔥 热榜聚合平台支持情况
 
-### ✅ 目前支持热榜平台
-
-以下平台已接入组件，点击即可查看热榜内容：
-
-- 📺 **哔哩哔哩**（`Bilibili`）
-- 🌟 **微博**（`WeiBo`）
-- 🎵 **抖音**（`DouYin`）
-- 🗞️ **今日头条**（`TouTiao`）
-- 💬 **百度贴吧**（`TieBa`）
-- 🎮 **原神**（`YuanShen`）
-
----
-
-### 🛠️ 目前暂不支持的平台
-
-以下平台暂未接入组件，仅预留配置，未来可能支持：
-
-- 📕 小红书（xiaohongshu）
-- 🧠 知乎（zhihu）
-- 🧬 36氪（36kr）
-- 🔍 百度（baidu）
-- 🔥 少数派（sspai）
-- 📰 IT之家（ithome）
-- 💰 稀土掘金（juejin）
-- 🗞 腾讯新闻（tencent）
-- 🎬 豆瓣电影（douban）
-- 🚄 星穹铁道（starrail）
-- 🏆 LOL（lol）
-- 🗞 网易新闻（netease）
-- 📚 微信读书（wxread）
-- 💬 豆瓣小组（dougroup）
-- 🧠 NGA（nga）
-- 💡 HelloGitHub（hellogithub）
-- 📖 简书（jianshu）
-- 🧠 知乎日报（zhihudaily）
+| 图标 | 平台名称       | 配置/组件名     | 状态       |
+|------|----------------|----------------|------------|
+| 📺   | 哔哩哔哩       | Bilibili       | ✅ 已接入   |
+| 🌟   | 微博           | WeiBo          | ✅ 已接入   |
+| 🎵   | 抖音           | DouYin         | ✅ 已接入   |
+| 🗞️   | 今日头条       | TouTiao        | ✅ 已接入   |
+| 💬   | 百度贴吧       | TieBa          | ✅ 已接入   |
+| 🎮   | 原神           | YuanShen       | ✅ 已接入   |
+| 📕   | 小红书         | xiaohongshu    | 🚧 预留配置 |
+| 🧠   | 知乎           | zhihu          | 🚧 预留配置 |
+| 🧬   | 36氪           | 36kr           | 🚧 预留配置 |
+| 🔍   | 百度           | baidu          | 🚧 预留配置 |
+| 🔥   | 少数派         | sspai          | 🚧 预留配置 |
+| 📰   | IT之家         | ithome         | 🚧 预留配置 |
+| 💰   | 稀土掘金       | juejin         | 🚧 预留配置 |
+| 🗞   | 腾讯新闻       | tencent        | 🚧 预留配置 |
+| 🎬   | 豆瓣电影       | douban         | 🚧 预留配置 |
+| 🚄   | 星穹铁道       | starrail       | 🚧 预留配置 |
+| 🏆   | LOL            | lol            | 🚧 预留配置 |
+| 🗞   | 网易新闻       | netease        | 🚧 预留配置 |
+| 📚   | 微信读书       | wxread         | 🚧 预留配置 |
+| 💬   | 豆瓣小组       | dougroup       | 🚧 预留配置 |
+| 🧠   | NGA            | nga            | 🚧 预留配置 |
+| 💡   | HelloGitHub    | hellogithub    | 🚧 预留配置 |
+| 📖   | 简书           | jianshu        | 🚧 预留配置 |
+| 🧠   | 知乎日报       | zhihudaily     | 🚧 预留配置 |
 
 ---
 
