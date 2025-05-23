@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://github.com/TongXue-Liu/MoYuRiLi/raw/main/icons/icon_128.png" alt="摸鱼日历" width="128" />
+  <img src="./resources/icons/icon_128.png" alt="摸鱼日历" width="128" />
 </p>
 
 <h2 align="center">摸鱼日历 🐟📅</h2>
