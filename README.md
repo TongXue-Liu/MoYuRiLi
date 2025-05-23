@@ -33,6 +33,48 @@
 
 - Axios：请求远程 API，获取日历内容
 
+## 🔥 热榜聚合平台支持情况
+
+### ✅ 目前支持热榜平台
+
+以下平台已接入组件，点击即可查看热榜内容：
+
+- 📺 **哔哩哔哩**（`Bilibili`）
+- 🌟 **微博**（`WeiBo`）
+- 🎵 **抖音**（`DouYin`）
+- 🗞️ **今日头条**（`TouTiao`）
+- 💬 **百度贴吧**（`TieBa`）
+- 🎮 **原神**（`YuanShen`）
+
+---
+
+### 🛠️ 目前暂不支持的平台
+
+以下平台暂未接入组件，仅预留配置，未来可能支持：
+
+- 📕 小红书（xiaohongshu）
+- 🧠 知乎（zhihu）
+- 🧬 36氪（36kr）
+- 🔍 百度（baidu）
+- 🔥 少数派（sspai）
+- 📰 IT之家（ithome）
+- 💰 稀土掘金（juejin）
+- 🗞 腾讯新闻（tencent）
+- 🎬 豆瓣电影（douban）
+- 🚄 星穹铁道（starrail）
+- 🏆 LOL（lol）
+- 🗞 网易新闻（netease）
+- 📚 微信读书（wxread）
+- 💬 豆瓣小组（dougroup）
+- 🧠 NGA（nga）
+- 💡 HelloGitHub（hellogithub）
+- 📖 简书（jianshu）
+- 🧠 知乎日报（zhihudaily）
+
+---
+
+📌 *本列表将持续更新，欢迎提交你感兴趣的平台！*
+
 ## 🚀 快速启动
 
 ```bash
@@ -60,9 +102,9 @@
 
 ## 🛠 遗留问题
 
-1. Tray托盘右键菜单丢失(25-5-16)
-
-2. 应用程序Icon无法进行打包(25-5-16)
+1. Tray托盘右键菜单丢失(25-5-16)  😀
+2. 应用程序Icon无法进行打包(25-5-16) 😀
+3. 程序集成electron-release-serve 后自动更新未生效(2025-5-23) 😌
 
 
 ## 📖 主要参考文献
@@ -73,9 +115,9 @@
 
 - [Hitokoto](https://developer.hitokoto.cn/sentence/)
 
-- [今日热榜](https://github.com/imsyy/DailyHotApi)
+<!-- - [今日热榜](https://github.com/imsyy/DailyHotApi) -->
 
-- [electron-release-server(更新服务器)](https://github.com/ArekSredzki/electron-release-server)
+- [electron-release-server(更新服务器-自动更新需要依赖服务器|Github)](https://github.com/ArekSredzki/electron-release-server)
 
 <!-- https://www.cnblogs.com/rion1234567/p/18059244 自动启动 -->
 
