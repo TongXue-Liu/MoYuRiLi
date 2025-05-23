@@ -1,4 +1,4 @@
-import { app, BrowserWindow, Menu, Tray } from "electron";
+import { app, BrowserWindow, ipcMain, Menu, Tray, shell } from "electron";
 import path from "node:path";
 import started from "electron-squirrel-startup";
 //自动启动
@@ -93,9 +93,9 @@ const createWindow = () => {
     height: 530,
     // titleBarStyle: "hidden",
     webPreferences: {
-      preload: path.join(__dirname, "preload.js"),
       contextIsolation: true, // 必须开启
       nodeIntegration: false, // 必须关闭
+      preload: path.join(__dirname, "preload.js"),
     },
   });
 
@@ -112,7 +112,7 @@ const createWindow = () => {
   }
 
   // Open the DevTools.
-  // mainWindow.webContents.openDevTools();
+  mainWindow.webContents.openDevTools();
 
   // minimize the window
   mainWindow.on("minimize", () => {
@@ -144,6 +144,12 @@ app.whenReady().then(() => {
   app.on("activate", () => {
     if (BrowserWindow.getAllWindows().length === 0) {
       createWindow();
+    }
+  });
+
+  ipcMain.on("open-url", (event, url) => {
+    if (typeof url === "string") {
+      shell.openExternal(url);
     }
   });
 });

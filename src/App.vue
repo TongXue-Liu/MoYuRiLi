@@ -34,7 +34,8 @@ import { getYiYan } from '@/api/yiyan'
 import { getCurrentDate } from '@/utils/date';
 
 //获取一言数据
-const hitokoto = ref('');
+const hitokoto = ref(null);
+
 function getYiYanHandler() {
     getYiYan().then((res) => {
         hitokoto.value = res.hitokoto;

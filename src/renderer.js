@@ -46,8 +46,6 @@ window.addEventListener("DOMContentLoaded", () => {
 
   setTimeout(() => {
     window.electronAPI.send("checkForUpdate");
-    console.log("ipcRenderer,checkForUpdate");
-    console.log(window.electronAPI);
   }, 3000);
 });
 
