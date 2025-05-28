@@ -47,3 +47,40 @@ export function getYuanShenHot() {
     url: "genshin?cache=true",
   });
 }
+
+
+// 掘金
+export function getJueJinHot() {
+  return request({
+    method: "get",
+    url: "juejin?cache=true",
+  });
+}
+
+// LoL
+export function getLoLHot() {
+  return request({
+    method: "get",
+    url: "lol?cache=true",
+  });
+}
+
+// hellogithub
+export function getHelloGitHubHot() {
+  return request({
+    method: "get",
+    url: "hellogithub?cache=true",
+  });
+}
+
+
+
+// ithome
+export function getITHomeHot() {
+  return request({
+    method: "get",
+    url: "ithome?cache=true",
+  });
+}
+
+

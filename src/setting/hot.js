@@ -50,8 +50,8 @@ export const hotTabs = [
     content: "少数派内容",
   },
   {
-    isShow: false,
-    component: "",
+    isShow: true,
+    component: "ITHome",
     label: "📰 IT之家",
     name: "ithome",
     content: "IT之家内容",
@@ -78,10 +78,10 @@ export const hotTabs = [
     content: "百度贴吧内容",
   },
   {
-    isShow: false,
-    component: "",
+    isShow: true,
+    component: "JueJin",
     label: "💰 稀土掘金",
-    name: "juejin",
+    name: "JueJin",
     content: "稀土掘金内容",
   },
   {
@@ -113,8 +113,8 @@ export const hotTabs = [
     content: "星穹铁道内容",
   },
   {
-    isShow: false,
-    component: "",
+    isShow: true,
+    component: "LoL",
     label: "🏆 LOL",
     name: "lol",
     content: "LOL内容",
@@ -148,8 +148,8 @@ export const hotTabs = [
     content: "NGA内容",
   },
   {
-    isShow: false,
-    component: "",
+    isShow: true,
+    component: "HelloGitHub",
     label: "💡 HelloGitHub",
     name: "hellogithub",
     content: "HelloGitHub内容",

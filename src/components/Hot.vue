@@ -34,6 +34,11 @@ import DouYin from '@/components/hot/DouYin.vue';
 import TouTiao from '@/components/hot/TouTiao.vue';
 import TieBa from '@/components/hot/TieBa.vue';
 import YuanShen from '@/components/hot/YuanShen.vue';
+import JueJin from '@/components/hot/JueJin.vue';
+import LoL from '@/components/hot/LoL.vue';
+import HelloGitHub from '@/components/hot/HelloGitHub.vue';
+import ITHome from '@/components/hot/ITHome.vue';
+
 // 注册组件
 const components = {
     Bilibili,
@@ -41,7 +46,11 @@ const components = {
     DouYin,
     TouTiao,
     TieBa,
-    YuanShen
+    YuanShen,
+    JueJin,
+    LoL,
+    HelloGitHub,
+    ITHome
 }
 // Icon
 import {
