@@ -1,7 +1,7 @@
 {
   "name": "moyu-rili",
   "productName": "MoYuRiLi",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "人间桂花落，夜静春山空。 认真生活的同时，也别忘了偶尔摸鱼。",
   "main": ".vite/build/main.js",
   "scripts": {
