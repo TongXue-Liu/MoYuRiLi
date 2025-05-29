@@ -19,8 +19,8 @@ import { dateFormat } from '@/utils/date.js';
 //返回的热点数据
 let activities = ref({});
 
-const getgetWeiBoHotHandler = () => {
-    getWeiBoHot().then((res) => {
+const getgetWeiBoHotHandler = async() => {
+   await getWeiBoHot().then((res) => {
         activities.value = res.data;
     })
 }
@@ -28,7 +28,7 @@ const getgetWeiBoHotHandler = () => {
 // 暴露刷新方法
 const refresh = () => {
     console.log("WeiBo Refresh……");
-    getgetWeiBoHotHandler();
+    return getgetWeiBoHotHandler();
 }
 
 // onMounted

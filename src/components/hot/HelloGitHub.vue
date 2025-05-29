@@ -19,8 +19,8 @@ import { dateFormat } from '@/utils/date.js';
 
 //返回的热点数据
 let activities = ref({});
-const getHelloGitHubHotHandler = () => {
-    getHelloGitHubHot().then((res) => {
+const getHelloGitHubHotHandler = async() => {
+    await getHelloGitHubHot().then((res) => {
         activities.value = res.data;
     })
 }
@@ -28,7 +28,7 @@ const getHelloGitHubHotHandler = () => {
 // 暴露刷新方法
 const refresh = () => {
     console.log("HelloGitHub Refresh……");
-    getHelloGitHubHotHandler();
+    return getHelloGitHubHotHandler();
 }
 
 // onMounted

@@ -20,8 +20,8 @@ import { dateFormat } from '@/utils/date.js';
 //返回的热点数据
 let activities = ref({});
 
-const getTieBaHotHandler = () => {
-    getTieBaHot().then((res) => {
+const getTieBaHotHandler = async() => {
+    await getTieBaHot().then((res) => {
         activities.value = res.data;
     })
 
@@ -30,7 +30,7 @@ const getTieBaHotHandler = () => {
 // 暴露刷新方法
 const refresh = () => {
     console.log("TieBa Refresh……");
-    getTieBaHotHandler();
+   return getTieBaHotHandler();
 }
 
 // onMounted

@@ -64,17 +64,34 @@ const activeName = ref('bilibili');
 // 用来存放组件 ref 的容器
 const componentRefs = reactive({})
 
+const requestFlag = ref(false);
+
 const setComponentRef = (name, el) => {
     if (el) componentRefs[name] = el;
 }
 
 //刷新全局
-const refreshGlobal = () => {
+const refreshGlobal = async () => {
+    if (requestFlag.value) {
+        ElMessage.warning("正在刷新中，请稍候...");
+        return;
+    }
+    requestFlag.value = true;
     console.log('正在刷新所有热点组件...');
-    Object.values(componentRefs).forEach(c => {
-        c?.refresh?.()
-    })
-    ElMessage.success("刷新成功!")
+    try {
+        const refreshPromiess = Object.values(componentRefs).map(c => {
+            return typeof c?.refresh === 'function' ? 
+            Promise.resolve(c.refresh()) : 
+            Promise.resolve();
+        });
+        await Promise.all(refreshPromiess);
+        ElMessage.success("刷新成功!")
+    } catch (err) {
+        console.log("刷新失败:", err);
+        ElMessage.error("刷新失败,请检查控制台日志.")
+    } finally {
+        requestFlag.value = false;
+    }
 }
 
 </script>

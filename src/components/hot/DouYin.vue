@@ -19,8 +19,8 @@ import { dateFormat } from '@/utils/date.js';
 
 //返回的热点数据
 let activities = ref({});
-const getDouYinHotHandler = () => {
-    getDouYinHot().then((res) => {
+const getDouYinHotHandler = async() => {
+    await getDouYinHot().then((res) => {
         activities.value = res.data;
     })
 
@@ -29,7 +29,7 @@ const getDouYinHotHandler = () => {
 // 暴露刷新方法
 const refresh = () => {
     console.log("DouYin Refresh……");
-    getDouYinHotHandler();
+    return getDouYinHotHandler();
 }
 
 // onMounted

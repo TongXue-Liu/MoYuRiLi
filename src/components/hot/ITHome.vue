@@ -19,8 +19,8 @@ import { dateFormat } from '@/utils/date.js';
 
 //返回的热点数据
 let activities = ref({});
-const getITHomeHotHandler = () => {
-    getITHomeHot().then((res) => {
+const getITHomeHotHandler = async() => {
+    await getITHomeHot().then((res) => {
         activities.value = res.data;
     })
 
@@ -29,7 +29,7 @@ const getITHomeHotHandler = () => {
 // 暴露刷新方法
 const refresh = () => {
     console.log("ITHome Refresh……");
-    getITHomeHotHandler();
+    return getITHomeHotHandler();
 }
 
 // onMounted

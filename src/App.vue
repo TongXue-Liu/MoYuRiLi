@@ -2,7 +2,7 @@
     <div class="box">
         <!-- 一言 -->
         <div class="top">
-            <div class="yiyan">
+            <div class="yiyan" @click="getYiYanHandler">
                 🌱 思绪一角：<span>{{ hitokoto ?? '希望你今天黑开心！' }}</span>
             </div>
             <div class="tips">
@@ -43,12 +43,21 @@ import { copyUrlHandler } from '@/utils/clipboard.js'
 //项目地址
 const project_url = ref("https://github.com/TongXue-Liu/MoYuRiLi");
 
+let reguqetFlag = ref(false);
+
 //获取一言数据
 const hitokoto = ref(null);
 
 function getYiYanHandler() {
+    if (reguqetFlag.value)
+        return
+
+    reguqetFlag.value = true;
+
     getYiYan().then((res) => {
         hitokoto.value = res.hitokoto;
+    }).finally(() => {
+        reguqetFlag.value = false;
     })
 }
 
@@ -88,6 +97,7 @@ setInterval(() => {
 .yiyan {
     font-size: 1rem;
     font-weight: 600;
+    cursor: pointer;
 }
 
 .yiyan>span {

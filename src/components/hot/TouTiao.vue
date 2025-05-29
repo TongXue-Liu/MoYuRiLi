@@ -19,8 +19,8 @@ import { dateFormat } from '@/utils/date.js';
 
 //返回的热点数据
 let activities = ref({});
-const getTouTiaoHotHandler = () => {
-    getTouTiaoHot().then((res) => {
+const getTouTiaoHotHandler = async() => {
+    await getTouTiaoHot().then((res) => {
         activities.value = res.data;
     })
 
@@ -29,7 +29,7 @@ const getTouTiaoHotHandler = () => {
 // 暴露刷新方法
 const refresh = () => {
     console.log("TouTiao Refresh……");
-    getTouTiaoHotHandler();
+    return getTouTiaoHotHandler();
 }
 
 // onMounted

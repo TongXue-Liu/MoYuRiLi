@@ -19,8 +19,8 @@ import { dateFormat } from '@/utils/date.js';
 
 //返回的热点数据
 let activities = ref({});
-const getYuanShenHotHandler = () => {
-    getYuanShenHot().then((res) => {
+const getYuanShenHotHandler = async() => {
+    await getYuanShenHot().then((res) => {
         activities.value = res.data;
     })
 }
@@ -28,7 +28,7 @@ const getYuanShenHotHandler = () => {
 // 暴露刷新方法
 const refresh = () => {
     console.log("YuanShen Refresh……");
-    getYuanShenHotHandler();
+    return getYuanShenHotHandler();
 }
 
 // onMounted

@@ -19,8 +19,8 @@ import { dateFormat } from '@/utils/date.js';
 
 //返回的热点数据
 let activities = ref({});
-const getLoLHotHandler = () => {
-    getLoLHot().then((res) => {
+const getLoLHotHandler = async() => {
+    await getLoLHot().then((res) => {
         activities.value = res.data;
     })
 
@@ -28,8 +28,8 @@ const getLoLHotHandler = () => {
 
 // 暴露刷新方法
 const refresh = () => {
-    console.log("DouYin Refresh……");
-    getLoLHotHandler();
+    console.log("LoL Refresh……");
+    return getLoLHotHandler();
 }
 
 // onMounted

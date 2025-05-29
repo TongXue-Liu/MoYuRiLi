@@ -19,8 +19,8 @@ import { dateFormat } from '@/utils/date.js';
 
 //返回的热点数据
 let activities = ref({});
-const getBilibiliHotHandle = () => {
-    getBilibiliHot().then((res) => {
+const getBilibiliHotHandle = async () => {
+    await getBilibiliHot().then((res) => {
         activities.value = res.data;
     })
 }
@@ -28,7 +28,7 @@ const getBilibiliHotHandle = () => {
 //刷新数据
 const refresh = () => {
     console.log("Bilibili Refresh……");
-    getBilibiliHotHandle();
+    return getBilibiliHotHandle();
 }
 
 onMounted(() => {
